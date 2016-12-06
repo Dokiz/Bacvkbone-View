@@ -20,7 +20,15 @@ var RocketView = Backbone.View.extend({
 	  var json = this.model.toJSON();
 	  var view = this.template(json);
 	  this.$el.html(view);
-	  
-  
-  }
+	},
+	deleteRow: function () {
+		this.model.destroy ();
+	},
+	editValue: function(){
+		this.model.set({
+			name: this.$('.name').text(),
+			description: this.$('.desc').text(),
+		    size: parseInt(this.$('.input.size').attr('value'))
+		},{validate:true});
+	}
 });
